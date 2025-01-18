@@ -1,8 +1,24 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const [windowSize, setWindowSize] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+
+  // Set window size on client-side
+  useEffect(() => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }, []);
+
+  // Early return if window size is not available yet
+  if (!windowSize) return null;
+
   const particles = Array.from({ length: 20 }, (_, i) => i);
 
   return (
@@ -14,17 +30,17 @@ const Hero = () => {
           className="absolute h-2 w-2 rounded-full bg-blue-400/30"
           animate={{
             x: [
-              Math.random() * window.innerWidth,
-              Math.random() * window.innerWidth,
+              Math.random() * windowSize.width,
+              Math.random() * windowSize.width,
             ],
             y: [
-              Math.random() * window.innerHeight,
-              Math.random() * window.innerHeight,
+              Math.random() * windowSize.height,
+              Math.random() * windowSize.height,
             ],
           }}
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * windowSize.width,
+            y: Math.random() * windowSize.height,
           }}
           transition={{
             duration: 10 + Math.random() * 20,
