@@ -1,16 +1,18 @@
 'use client';
 import { Project, ProjectCardProps } from '@/types/project.type';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
   Camera,
   Code2,
   Cpu,
+  ExternalLink,
   GitBranch,
   Globe,
   Layers,
   Shield,
-  Timer,
+  TrendingUp,
+  X,
 } from 'lucide-react';
 import { JSX, useState } from 'react';
 
@@ -24,7 +26,7 @@ const projects: Project[] = [
     description:
       "Comprehensive digital transformation initiative encompassing multiple integrated platforms for Aura Group's beauty clinics and operations.",
     image:
-      'https://kyanon.digital/wp-content/uploads/2022/10/Enterprise-Mobile-Application-Development-services.jpg',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
     products: [
       {
         name: 'Aura Manager (Zalo Mini App)',
@@ -75,7 +77,7 @@ const projects: Project[] = [
     description:
       'Advanced AI-powered security and visitor management system with anti-spoofing face recognition.',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8eUvwQHdQ-4KsipL617xsEJhikjcXUygd2A&s',
+      'https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=2340&auto=format&fit=crop',
     products: [
       {
         name: 'Smart Check-in System',
@@ -121,7 +123,7 @@ const projects: Project[] = [
     description:
       'Enterprise-grade EDR/XDR/SOAR platform for comprehensive network security and endpoint management.',
     image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfn2L4VMZdjZZTMzp5POYDJ1oMkFknPTgDqw&s',
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop',
     products: [
       {
         name: 'Plugin System Architecture',
@@ -159,7 +161,7 @@ const projects: Project[] = [
     description:
       'Comprehensive LMS and marketing platform for wellbeingcirclevn.org, facilitating online learning and community engagement.',
     image:
-      'https://scontent.fhan4-6.fna.fbcdn.net/v/t39.30808-6/460402305_122164901456055021_3922764334141011662_n.png?stp=dst-png_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=dV05bcxde20Q7kNvgE55yg-&_nc_oc=AdiPF2RXV1rambb6ahs5dxlp-BvuNVhbMAiDivO95ePuBSx1L9Gr_hAxrTvGs1lK2sU&_nc_zt=23&_nc_ht=scontent.fhan4-6.fna&_nc_gid=AxM_0Vgfld5KkFErGkw2Gpt&oh=00_AYAgHBDkSZDr-B6PstvzQJn4Ptb1MFjsWc-zWAGud8GeiQ&oe=67910108',
+      'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2374&auto=format&fit=crop',
     stats: {
       'Active Learners': '1000+',
       'Course Completion': '85%',
@@ -173,6 +175,60 @@ const projects: Project[] = [
     tags: ['React', 'Node.js', 'LMS', 'PostgreSQL'],
     role: 'Full Stack Developer',
   },
+  {
+    id: 5,
+    title: 'C-UAS Defense System',
+    subtitle: 'Counter-Unmanned Aircraft System',
+    category: 'Defense & Security',
+    icon: <Shield className="w-6 h-6" />,
+    description:
+      'Advanced Counter-UAS system integrating RF digital detection devices, Electro-Optical (EO) systems, and custom drone communication decoders for comprehensive airspace security.',
+    image:
+      'https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=2070&auto=format&fit=crop',
+    products: [
+      {
+        name: 'RF Detection & Analysis',
+        details:
+          'Digital RF spectrum monitoring system for drone signal detection and identification',
+      },
+      {
+        name: 'Electro-Optical Tracking',
+        details:
+          'EO/IR camera systems with automated target tracking and threat assessment',
+      },
+      {
+        name: 'Drone Communication Decoder',
+        details:
+          'Custom protocol decoders for intercepting and analyzing drone control signals',
+      },
+      {
+        name: 'Integrated Command System',
+        details:
+          'Unified platform for multi-sensor data fusion and threat response coordination',
+      },
+    ],
+    stats: {
+      'Detection Range': '5+ km',
+      'Response Time': '<10 sec',
+      'Identification Accuracy': '95%',
+    },
+    impact: [
+      'Developed multi-spectrum detection system combining RF and EO sensors for 360° coverage',
+      'Implemented real-time drone protocol decoding for major commercial drone platforms',
+      'Created automated threat classification reducing operator workload by 70%',
+      'Integrated multi-sensor fusion for enhanced detection in challenging environments',
+    ],
+    tags: [
+      'RF Engineering',
+      'Computer Vision',
+      'Signal Processing',
+      'Python',
+      'C++',
+      'Embedded Systems',
+      'Real-time Systems',
+    ],
+    role: 'Systems Engineer & Software Developer',
+  },
 ];
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -181,215 +237,321 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   onClick,
 }) => {
   return (
-    <motion.div
-      layout="position"
+    <motion.article
       onClick={onClick}
-      className={`bg-white dark:bg-gray-800  rounded-xl shadow-lg overflow-hidden cursor-pointer
-        ${isSelected ? 'col-span-2 row-span-2' : 'col-span-1'}`}
-      whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
-      transition={{
-        layout: { duration: 0.5, ease: 'easeInOut' },
-        default: { duration: 0.2 },
-      }}>
-      <motion.div
-        className="relative"
-        layout="position">
-        <div className="absolute top-4 right-4 z-10 bg-blue-600 p-2 rounded-full text-white">
-          {project.icon}
-        </div>
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden cursor-pointer border border-gray-100 dark:border-gray-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-300 flex flex-col h-full"
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ duration: 0.3 }}>
+      {/* Image Container with Overlay */}
+      <div className="relative h-64 overflow-hidden flex-shrink-0">
         <motion.img
-          layout="position"
           src={project.image}
           alt={project.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-6">
-          <div className="text-white text-sm font-medium mb-2">
-            {project.category}
-          </div>
-          <motion.h3
-            layout="position"
-            className="text-xl font-bold text-white mb-2">
-            {project.title}
-          </motion.h3>
-          <motion.p
-            layout="position"
-            className="text-gray-200 text-sm">
-            {project.subtitle}
-          </motion.p>
-        </div>
-      </motion.div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-      <AnimatePresence>
-        {isSelected && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="p-6">
-            <div className="mb-6">
-              <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                <Code2 className="w-5 h-5" /> Role & Description
-              </h4>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+        {/* Category Badge */}
+        <div className="absolute top-4 left-4 flex items-center gap-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+          <div className="text-blue-600 dark:text-blue-400">{project.icon}</div>
+          <span className="text-sm font-semibold text-gray-900 dark:text-white">
+            {project.category}
+          </span>
+        </div>
+
+        {/* Project Title Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <h3 className="text-2xl font-bold text-white mb-1 line-clamp-2">
+            {project.title}
+          </h3>
+          <p className="text-blue-200 text-sm font-medium">
+            {project.subtitle}
+          </p>
+        </div>
+      </div>
+
+      {/* Content Preview */}
+      <div className="p-6 flex flex-col flex-grow">
+        <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mb-4 h-10">
+          {project.description}
+        </p>
+
+        {/* Tech Stack Preview */}
+        <div className="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
+          {project.tags.slice(0, 3).map((tag, index) => (
+            <span
+              key={index}
+              className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
+              {tag}
+            </span>
+          ))}
+          {project.tags.length > 3 && (
+            <span className="text-xs font-medium px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+              +{project.tags.length - 3} more
+            </span>
+          )}
+        </div>
+
+        {/* View Details Button */}
+        <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-lg font-medium transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/50 mt-auto">
+          <span>View Details</span>
+          <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </button>
+      </div>
+    </motion.article>
+  );
+};
+
+const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({
+  project,
+  onClose,
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ type: 'spring', duration: 0.5 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+        </button>
+
+        {/* Modal Content */}
+        <div className="overflow-y-auto max-h-[90vh]">
+          {/* Hero Section */}
+          <div className="relative h-80">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-xl text-blue-600 dark:text-blue-400">
+                  {project.icon}
+                </div>
+                <div>
+                  <span className="text-blue-200 text-sm font-medium">
+                    {project.category}
+                  </span>
+                  <h2 className="text-3xl font-bold text-white">
+                    {project.title}
+                  </h2>
+                  <p className="text-blue-200 font-medium">
+                    {project.subtitle}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="p-8">
+            {/* Role & Description */}
+            <div className="mb-8">
+              <div className="flex items-center gap-2 mb-3">
+                <Code2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Role & Overview
+                </h3>
+              </div>
+              <p className="text-blue-600 dark:text-blue-400 font-semibold mb-3">
                 {project.role}
               </p>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 {project.description}
               </p>
             </div>
 
+            {/* Key Metrics */}
+            <div className="mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Key Metrics
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {Object.entries(project.stats).map(([key, value]) => (
+                  <div
+                    key={key}
+                    className="relative p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 rounded-xl border border-blue-200 dark:border-blue-800 overflow-hidden group hover:shadow-lg transition-shadow">
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform" />
+                    <div className="relative">
+                      <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                        {value}
+                      </div>
+                      <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {key}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Products */}
             {project.products && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
-                className="mb-6">
-                <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                  <Cpu className="w-5 h-5" /> Key Products
-                </h4>
-                <div className="space-y-3">
+              <div className="mb-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <Cpu className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    Key Products & Features
+                  </h3>
+                </div>
+                <div className="grid gap-4">
                   {project.products.map((product, index) => (
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+                    <div
                       key={index}
-                      className="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                      <div className="font-medium text-blue-600 dark:text-blue-400">
+                      className="p-5 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors">
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                         {product.name}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-300">
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">
                         {product.details}
-                      </div>
-                    </motion.div>
+                      </p>
+                    </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-              className="mb-6">
-              <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                <Timer className="w-5 h-5" /> Key Metrics
-              </h4>
-              <div className="grid grid-cols-3 gap-4">
-                {Object.entries(project.stats).map(([key, value], index) => (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
-                    key={key}
-                    className="text-center">
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                      {value}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {key}
-                    </div>
-                  </motion.div>
-                ))}
+            {/* Business Impact */}
+            <div className="mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <Layers className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Business Impact
+                </h3>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
-              className="mb-6">
-              <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                <Layers className="w-5 h-5" /> Business Impact
-              </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {project.impact.map((item, index) => (
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
+                  <li
                     key={index}
-                    className="flex items-start gap-2">
-                    <ArrowRight className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
-                    <span className="text-gray-600 dark:text-gray-300">
+                    className="flex items-start gap-3 p-4 bg-green-50 dark:bg-green-950 rounded-lg border border-green-200 dark:border-green-900">
+                    <ArrowRight className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700 dark:text-gray-300">
                       {item}
                     </span>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.9 }}>
-              <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
-                <GitBranch className="w-5 h-5" /> Technologies
-              </h4>
+            {/* Technologies */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <GitBranch className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  Technologies & Tools
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
+                  <span
                     key={index}
-                    className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 
-                    text-sm px-3 py-1 rounded-full font-medium">
+                    className="px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-950 dark:to-blue-900 text-blue-700 dark:text-blue-300 rounded-lg font-medium text-sm border border-blue-200 dark:border-blue-800 hover:shadow-md transition-shadow">
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };
 
 export default function Projects(): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const selectedProjectData = projects.find((p) => p.id === selectedProject);
 
   return (
-    <LayoutGroup>
+    <>
       <section
         id="projects"
-        className="py-20 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="container mx-auto px-6">
+        className="relative py-24 bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-50 dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900 overflow-hidden">
+        {/* Background Decoration */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="inline-block mb-4">
+              <span className="px-4 py-2 bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold">
+                Portfolio
+              </span>
+            </motion.div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Delivering innovative solutions across AI, cybersecurity,
-              enterprise software, and digital transformation
+              enterprise software, and digital transformation with measurable
+              impact
             </p>
           </motion.div>
 
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <ProjectCard
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {projects.map((project, index) => (
+              <motion.div
                 key={project.id}
-                project={project}
-                isSelected={selectedProject === project.id}
-                onClick={() =>
-                  setSelectedProject(
-                    selectedProject === project.id ? null : project.id
-                  )
-                }
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}>
+                <ProjectCard
+                  project={project}
+                  isSelected={selectedProject === project.id}
+                  onClick={() => setSelectedProject(project.id)}
+                />
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
-    </LayoutGroup>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {selectedProjectData && (
+          <ProjectModal
+            project={selectedProjectData}
+            onClose={() => setSelectedProject(null)}
+          />
+        )}
+      </AnimatePresence>
+    </>
   );
 }
