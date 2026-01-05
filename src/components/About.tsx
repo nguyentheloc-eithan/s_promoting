@@ -136,7 +136,7 @@ const About: React.FC = () => {
                   />
                   <div className="absolute inset-2 bg-white dark:bg-gray-900 rounded-3xl overflow-hidden">
                     <Image
-                      src="https://i.pinimg.com/736x/77/77/c7/7777c73306982854c388cdecf5cb4970.jpg"
+                      src="https://ucarecdn.com/4e1b46ea-4c7d-4fa3-b6a7-463b4b0077e1/-/preview/750x1000/"
                       alt="Nguyen The Loc"
                       fill
                       className="object-cover hover:scale-110 transition-transform duration-700"

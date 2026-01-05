@@ -70,8 +70,8 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Vadio Vision Security Suite',
-    subtitle: 'Smart Visitor Management System',
+    title: 'Smart Visitor Management System',
+    subtitle: 'Turbo Solution - Vadio Vision',
     category: 'AI & Computer Vision',
     icon: <Camera className="w-6 h-6" />,
     description:
@@ -154,8 +154,8 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'Wellbeing Circle Vietnam',
-    subtitle: 'E-Learning Platform',
+    title: 'E-Learning Platform',
+    subtitle: 'Wellbeing Circle Vietnam',
     category: 'Web Development',
     icon: <Globe className="w-6 h-6" />,
     description:
@@ -178,7 +178,7 @@ const projects: Project[] = [
   {
     id: 5,
     title: 'C-UAS Defense System',
-    subtitle: 'Counter-Unmanned Aircraft System',
+    subtitle: 'ST Engineering',
     category: 'Defense & Security',
     icon: <Shield className="w-6 h-6" />,
     description:
@@ -316,7 +316,7 @@ const ProjectModal: React.FC<{ project: Project; onClose: () => void }> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
-      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+      className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center top-12 p-4 overflow-y-auto">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}

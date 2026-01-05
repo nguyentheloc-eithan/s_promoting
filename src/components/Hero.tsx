@@ -152,7 +152,7 @@ const Hero = () => {
                     <Github className="w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/yourprofile"
+                    href="https://www.linkedin.com/in/l%E1%BB%99c-nguy%E1%BB%85n-th%E1%BA%BF-87a98120b/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-lg transition-all duration-300 group">
