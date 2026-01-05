@@ -71,7 +71,7 @@ const projects: Project[] = [
   {
     id: 2,
     title: 'Smart Visitor Management System',
-    subtitle: 'Turbo Solution - Vadio Vision',
+    subtitle: 'Turbo Solution & Vadio AI Vision',
     category: 'AI & Computer Vision',
     icon: <Camera className="w-6 h-6" />,
     description:
